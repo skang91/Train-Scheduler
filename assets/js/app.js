@@ -1,4 +1,4 @@
-// Initialize Firebase
+//Firebase
 var config = {
     apiKey: "AIzaSyACw1ScbYG1PcmWqHv4ZLbGpO4FAK_gwsc",
     authDomain: "train-scheduler-85ce3.firebaseapp.com",
@@ -12,7 +12,7 @@ var config = {
 
 firebase.initializeApp(config);
 
-// initial values
+//VALUES
 var dataRef = firebase.database();
 var name = "";
 var destination = "";
@@ -20,7 +20,7 @@ var time = "";
 var frequency = "";
 var currentTime = moment(currentTime).format('hh:mm');
 var firstTimeConverted;
-var clock;
+var clock; 
 var date;
 var trainName;
 var trainDes;
@@ -34,23 +34,23 @@ var trainFreqs = [];
 
 //CALCULATION
 function showTrains() {
+
 //time difference = current time - time of first train
 var timeDiff = moment().diff(firstTimeConverted, 'minutes');
-console.log("DIFFERENCE IN TIME: " + timeDiff);
-//timeDiff % frequency = minutesAgo
+
+//timeDiff % frequency = minutes ago
 var minutesAgo = timeDiff % trainFreq;
-console.log("LAST TRAIN CAME" + " " + minutesAgo + " " + "MINUTES AGO");
+
 //minutesLeft = frequency - minutesAgo
 minutesLeft = trainFreq - minutesAgo;
-console.log("MINUTES TILL TRAIN: " + minutesLeft);
+
 //currentTime + minutesLeft = time of next train
 var nextTrain = moment().add(minutesLeft, "minutes");
-console.log(nextTrain);
+
 //format new time
 nextTrainTime = moment(nextTrain).format("hh:mm");
-console.log("ARRIVAL TIME: " + nextTrainTime);
 
-//appends train info to table
+//Train info table 
 $("#table-body").append("<tr class='table-row'><td class='table-name'> " + trainName +
 " </td><td class='table-desination'> " + trainDes +
 " </td><td class='table-frequency'> " + trainFreq + " </td><td class='next-train'> " + nextTrainTime +
@@ -61,10 +61,11 @@ $("#table-body").append("<tr class='table-row'><td class='table-name'> " + train
 
 //updates table
 function updateTable() {
+
 //empty table
 $("#table-body").empty();
 
-// updates values in table
+//updates values in table
 for (i = 0; i < trainNames.length; i++) {
     firstTimeConverted = moment(trainTimes[i], "hh:mm").subtract(1, "years");
     trainName = trainNames[i]
