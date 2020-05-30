@@ -2,7 +2,7 @@
 
 Firebase Assignment - Train Scheduler 
 
-![screenshot](screenshot.png)
+![screenshot](Screenshot.png)
 
 Instructions:
 1. When adding trains, administrators should be able to submit the following:
