@@ -1,6 +1,6 @@
 # Train-Scheduler
 
-Firebase Assignment - Train Scheduler 
+Firebase - Train Scheduler 
 
 ![screenshot](Screenshot.png)
 
